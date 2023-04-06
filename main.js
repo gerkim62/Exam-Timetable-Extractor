@@ -186,7 +186,7 @@ async function getGPTResponse(prompt) {
 
 function makePrompt(presentCourses, pageText) {
   if (presentCourses.length === 0) return;
-  let instruction = `all dates in this format "MM/DD/YY HH:MM AM/PM" are incorrect and must be ignored "NOTE: you must return json,no explanation, plain json only, no more at all, dont return multiple corses with same code, dont choose any date that is not included in the text, NO DUPLICATES ALLOWED" give me json Array of ${
+  let instruction = `IMPORTANT: all dates in the format "MM/DD/YY HH:MM AM/PM" are incorrect and must be ignored .dates such as "Tue, 18-04-2023" are correct. return dates in this format. "NOTE: you must return json,no explanation, plain json only, no more at all, dont return multiple corses with same code, dont choose any date that is not included in the text, NO DUPLICATES ALLOWED" give me json Array of ${
     presentCourses.length
   } element(s) for the following course codes: "${presentCourses.join(
     ","
@@ -215,6 +215,7 @@ async function main() {
 
     const timetableJson = await getTimetableJson(pdfTextContent, courses);
     updateLogs("Displaying timetable...");
+    console.log(timetableJson);
     displayEvents(timetableJson);
   } catch (e) {
     updateLogs("App could not start " + e.message);
