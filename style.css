@@ -16,6 +16,7 @@
 .event-table th {
   border: 1px solid #ddd;
   padding: 8px;
+  white-space: nowrap;
 }
 
 .event-table th {
@@ -139,6 +140,7 @@ input[type="text"] {
   cursor: pointer;
   margin-right: 10px;
   margin-bottom: 10px;
+  white-space: nowrap;
 }
 
 .button:hover {
