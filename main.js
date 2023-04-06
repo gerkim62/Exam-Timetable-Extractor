@@ -200,6 +200,8 @@ function makePrompt(presentCourses, pageText) {
 }
 
 async function main() {
+  //
+  document.getElementById("loader").style.display = "block";
   try {
     const timetableUrl = "./timetable.pdf";
     updateLogs("Fetching timetable pdf...");
@@ -217,6 +219,8 @@ async function main() {
   } catch (e) {
     updateLogs("App could not start " + e.message);
   }
+  //show loader
+  document.getElementById("loader").style.display = "none";
 }
 
 function displayEvents(events) {
@@ -264,6 +268,8 @@ function displayEvents(events) {
   table.appendChild(tbody);
 
   setTimeout(() => {
+    document.getElementById("try-again").style.display = "block";
+
     document.getElementById("logs").innerHTML =
       "<p>Process completed Successfully!</p>";
 
@@ -281,6 +287,7 @@ const submitButton = document.getElementById("submit-button");
 submitButton.addEventListener("click", function (e) {
   e.preventDefault();
   main();
+
   //hide the form
   document.getElementById("form").style.display = "none";
   //hide ul

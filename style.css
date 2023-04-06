@@ -162,3 +162,17 @@ li {
   border-radius: 5px;
   margin-bottom: 10px;
 }
+
+#loader {
+  animation: loader 15s infinite linear;
+  margin-top: 40px !important;
+}
+
+@keyframes loader {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

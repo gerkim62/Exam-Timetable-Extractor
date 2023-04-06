@@ -16,6 +16,10 @@
       tool to help you.
     </div>
 
+    <h3 style="text-align: center; font-family: Arial, Helvetica, sans-serif">
+      By Gerison, It's Free!
+    </h3>
+
     <form id="form">
       <h4 style="margin-bottom: 20px">
         Enter your courses to extract your timetable
@@ -38,6 +42,13 @@
     <ul id="course-list"></ul>
 
     <div
+      style="margin-top: 100px; text-align: center; display: none"
+      id="loader"
+    >
+      Please wait, Loading...
+    </div>
+
+    <div
       style="
         position: absolute;
         bottom: 0;
@@ -50,6 +61,23 @@
     >
       App not started...
     </div>
+    <button
+      class="button"
+      onclick="location.reload()"
+      style="
+        margin-inline: auto;
+        position: absolute;
+        left: 50%;
+        top: 75%;
+        transform: translate(-50%, 50%);
+        opacity: 0.85;
+        display: none;
+      "
+      id="try-again"
+    >
+      Try Again
+    </button>
+
     <script src="main.js"></script>
   </body>
 </html>
