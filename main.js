@@ -324,6 +324,8 @@ addButton.addEventListener("click", function (e) {
     newCourseListItem.textContent = courseCode;
     courseList.appendChild(newCourseListItem);
     courseCodeInput.value = "";
+    //enable submit button
+    document.getElementById("submit-button").disabled = false;
     document.getElementById("submit-button").classList.remove("disabled");
   } else if (courseCode === "") {
     updateLogs("You did not add a course code!");
