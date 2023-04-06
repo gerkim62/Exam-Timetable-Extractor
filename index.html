@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title></title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <script src="https://mozilla.github.io/pdf.js/build/pdf.js"></script>
+
+    <div style="text-align: center; font-family: Arial, Helvetica, sans-serif">
+      <b>Disclaimer:</b> The information displayed here may or may not be
+      Accurate, you must confirm from the final exam timetable. This is just a
+      tool to help you.
+    </div>
+
+    <form id="form">
+      <h4 style="margin-bottom: 20px">
+        Enter your courses to extract your timetable
+      </h4>
+      <label for="course-code">Enter course code:</label><br />
+      <input
+        type="text"
+        placeholder="e.g STAT150"
+        id="course-code"
+        name="course-code"
+      /><br />
+      <div>
+        <button type="submit" class="button" id="add-button">Add</button>
+        <button type="button" class="button disabled" id="submit-button">
+          Submit
+        </button>
+      </div>
+    </form>
+
+    <ul id="course-list"></ul>
+
+    <div
+      style="
+        position: absolute;
+        bottom: 0;
+        text-align: center;
+        z-index: -1;
+        width: 100vw;
+        margin: 0;
+      "
+      id="logs"
+    >
+      App not started...
+    </div>
+    <script src="main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,164 @@
+* {
+  max-width: 90vw;
+}
+
+/* Table styling */
+.event-table {
+  font-family: Arial, sans-serif;
+  border-collapse: collapse;
+  width: 90%;
+  margin: 20px;
+  margin-inline: auto;
+  background-color: #f2f2f2;
+}
+
+.event-table td,
+.event-table th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+.event-table th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #9c3aa5;
+  color: white;
+}
+
+/* Row styling */
+.event-row:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.event-row:hover {
+  background-color: #ddd;
+  cursor: pointer;
+}
+
+/* Cell styling */
+.event-date {
+  font-weight: bold;
+}
+
+.event-time {
+  font-style: italic;
+}
+
+.event-page {
+  font-size: 0.8em;
+  color: #888;
+}
+
+.event-code {
+  font-size: 0.9em;
+}
+
+.event-code::after {
+  content: " - ";
+}
+
+/* Page break */
+.event-page::before {
+  content: "Page ";
+}
+
+/* Responsive design */
+@media screen and (max-width: 600px) {
+  .event-table {
+    font-size: 12px;
+  }
+}
+
+#logs {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 10px;
+  background-color: #f1f1f1;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+#logs p {
+  margin: 0;
+  padding: 5px 0;
+}
+
+#logs p:first-child {
+  font-weight: bold;
+}
+
+#logs p:nth-child(odd) {
+  background-color: #fff;
+}
+
+#logs p:nth-child(even) {
+  background-color: #f5f5f5;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f0f0f0;
+}
+
+form {
+  width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: white;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+
+  margin-top: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+label {
+  font-weight: bold;
+}
+
+input[type="text"] {
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #cccccc;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.button {
+  background-color: #4caf50;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
+
+.button:hover {
+  background-color: #3e8e41;
+}
+
+.button.disabled {
+  background-color: #cccccc;
+  cursor: default;
+}
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 10px;
+  width: 400px;
+  margin-inline: auto;
+}
+li {
+  padding: 10px;
+  border: 1px solid #cccccc;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
