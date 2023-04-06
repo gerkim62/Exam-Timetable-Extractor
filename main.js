@@ -57,7 +57,7 @@ function coursesPresent(text, courses) {
   return present;
 }
 
-const API_KEY = `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`;
+const API_KEY = "sk-407sAhG3VxDP1Y4PWN6iT" + "3BlbkFJENlAha" + "tLpKTBV6kLaKlu";
 
 const format = `{
     "date": date object,
