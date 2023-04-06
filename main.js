@@ -285,6 +285,7 @@ function displayEvents(events) {
 // Add an event listener to the "Add" button
 const addButton = document.getElementById("add-button");
 const submitButton = document.getElementById("submit-button");
+const form = document.getElementById("form");
 submitButton.addEventListener("click", function (e) {
   e.preventDefault();
   const courseCodeInput = document.getElementById("course-code");
@@ -298,7 +299,7 @@ submitButton.addEventListener("click", function (e) {
   main();
 
   //hide the form
-  document.getElementById("form").style.display = "none";
+  form.style.display = "none";
   //hide ul
   document.getElementById("course-list").style.display = "none";
 });
@@ -315,6 +316,8 @@ addButton.addEventListener("click", function (e) {
       updateLogs("Course already added!");
       return;
     }
+    //tried to add empty course code
+
     courses.push(courseCode);
     const courseList = document.getElementById("course-list");
     const newCourseListItem = document.createElement("li");
@@ -322,6 +325,9 @@ addButton.addEventListener("click", function (e) {
     courseList.appendChild(newCourseListItem);
     courseCodeInput.value = "";
     document.getElementById("submit-button").classList.remove("disabled");
+  } else if (courseCode === "") {
+    updateLogs("You did not add a course code!");
+    return;
   } else {
     updateLogs(courseCode + " is not a valid course code!");
   }
