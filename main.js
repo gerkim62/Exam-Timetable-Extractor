@@ -133,7 +133,7 @@ async function getTimetableJson(pdfTextContent, courses) {
         timetableJson.push(...json);
       } catch (e) {
         updateLogs(
-          `Error while fetching the courses data for page ${page.page}`
+          `An error occured while fetching the courses data for page ${page.page}`
         );
         console.log("Error while fetching the courses data", e);
       }
@@ -218,7 +218,7 @@ async function main() {
     console.log(timetableJson);
     displayEvents(timetableJson);
   } catch (e) {
-    updateLogs("App could not start " + e.message);
+    updateLogs("A connection error occured, please reload the page");
   }
   //show loader
   document.getElementById("loader").style.display = "none";
@@ -287,6 +287,14 @@ const addButton = document.getElementById("add-button");
 const submitButton = document.getElementById("submit-button");
 submitButton.addEventListener("click", function (e) {
   e.preventDefault();
+  const courseCodeInput = document.getElementById("course-code");
+  const courseCode = courseCodeInput.value
+    .trim()
+    .toUpperCase()
+    .replace(/\s/g, "");
+  if (courseCode) {
+    addButton.click();
+  }
   main();
 
   //hide the form
@@ -297,7 +305,10 @@ submitButton.addEventListener("click", function (e) {
 addButton.addEventListener("click", function (e) {
   e.preventDefault();
   const courseCodeInput = document.getElementById("course-code");
-  const courseCode = courseCodeInput.value.trim().toUpperCase();
+  const courseCode = courseCodeInput.value
+    .trim()
+    .toUpperCase()
+    .replace(/\s/g, "");
 
   if (courseCode.length === 7) {
     if (courses.includes(courseCode)) {
