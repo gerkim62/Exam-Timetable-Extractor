@@ -186,7 +186,7 @@ async function getGPTResponse(prompt) {
 
 function makePrompt(presentCourses, pageText) {
   if (presentCourses.length === 0) return;
-  let instruction = `"NOTE: you must return json,no explanation, plain json only, no more at all, dont return multiple corses with same code, dont choose any date that is not included in the text, NO DUPLICATES ALLOWED" give me json Array of ${
+  let instruction = `all dates in this format "MM/DD/YY HH:MM AM/PM" are incorrect and must be ignored "NOTE: you must return json,no explanation, plain json only, no more at all, dont return multiple corses with same code, dont choose any date that is not included in the text, NO DUPLICATES ALLOWED" give me json Array of ${
     presentCourses.length
   } element(s) for the following course codes: "${presentCourses.join(
     ","
