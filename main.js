@@ -78,7 +78,7 @@ let errorOccured = false;
 function updateLogs(log) {
   logs = "<p>" + log + "</p>" + logs;
   const logsArray = logs.split("</p>").slice(0, -1); // Split logs string into an array of messages and remove the last empty element
-  const last10Logs = logsArray.slice(0, 10).join("</p>") + "</p>"; // Get the last 10 logs and join them back into a string
+  const last10Logs = logsArray.slice(0, 5).join("</p>") + "</p>"; // Get the last 10 logs and join them back into a string
   document.getElementById("logs").innerHTML = last10Logs;
 }
 
