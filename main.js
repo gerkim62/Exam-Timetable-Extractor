@@ -210,7 +210,7 @@ async function main() {
     updateLogs("Fetching pdf text content...");
     console.log("fetching pdf text content");
     const pdfTextContent = await getPDFText(pdfData);
-    updateLogs("Fetching timetable json...");
+    // updateLogs("Fetching timetable json...");
     console.log("fetching timetable json");
 
     const timetableJson = await getTimetableJson(pdfTextContent, courses);
@@ -323,6 +323,6 @@ addButton.addEventListener("click", function (e) {
     courseCodeInput.value = "";
     document.getElementById("submit-button").classList.remove("disabled");
   } else {
-    updateLogs("Invalid course code entered, must be 7 characters long!");
+    updateLogs(courseCode + " is not a valid course code!");
   }
 });
