@@ -92,6 +92,7 @@ const courses = [
 ];
 
 const foundCourses = [];
+let previousDate = null;
 
 updateLogs("App started...");
 
@@ -131,6 +132,7 @@ async function getTimetableJson(pdfTextContent, courses) {
         //add page number to each course
         json.forEach((course) => {
           course.page = currentPage;
+          previousDate = course.date;
         });
 
         timetableJson.push(...json);
@@ -181,6 +183,7 @@ async function getGPTResponse(prompt) {
     console.log("Some response received...");
     return await res.json();
   } catch (e) {
+    //todo: show refresh button
     errorOccured = true;
     updateLogs("Error while fetching response");
     console.log("Error while fetching response", e);
@@ -188,8 +191,14 @@ async function getGPTResponse(prompt) {
 }
 
 function makePrompt(presentCourses, pageText) {
+  let dateConstraint = "";
+
+  if (previousDate) {
+    dateConstraint = `date must be after ${previousDate}`;
+  }
+
   if (presentCourses.length === 0) return;
-  let instruction = `IMPORTANT: all dates in the format "MM/DD/YY HH:MM AM/PM" are incorrect and must be ignored .dates such as "Tue, 18-04-2023" are correct. return dates in this format. "NOTE: you must return json,no explanation, plain json only, no more at all, dont return multiple corses with same code, dont choose any date that is not included in the text, NO DUPLICATES ALLOWED" give me json Array of ${
+  let instruction = `IMPORTANT: all dates in the format "MM/DD/YY HH:MM AM/PM" are incorrect and must be ignored .dates such as "Tue, 18-04-2023" are correct. return dates in this format. ${dateConstraint} "NOTE: you must return json,no explanation, plain json only, no more at all, dont return multiple corses with same code, dont choose any date that is not included in the text, NO DUPLICATES ALLOWED" give me json Array of ${
     presentCourses.length
   } element(s) for the following course codes: "${presentCourses.join(
     ","
