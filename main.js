@@ -91,6 +91,8 @@ const courses = [
   // "MATH121",
 ];
 
+const foundCourses = [];
+
 updateLogs("App started...");
 
 async function getTimetableJson(pdfTextContent, courses) {
@@ -102,6 +104,7 @@ async function getTimetableJson(pdfTextContent, courses) {
     const pageText = page.text;
     currentPage = page.page;
     const presentCourses = coursesPresent(pageText, courses);
+    foundCourses.push(...presentCourses);
 
     const prompt = makePrompt(presentCourses, pageText);
     if (prompt) {
@@ -217,8 +220,21 @@ async function main() {
     updateLogs("Displaying timetable...");
     console.log(timetableJson);
     displayEvents(timetableJson);
+
+    console.log(foundCourses, courses);
+    if (foundCourses.length !== courses.length) {
+      updateLogs(
+        `Some courses were not found in the pdf, please check the courses you entered and try again`
+      );
+      const notFoundCourses = courses.filter(
+        (course) => !foundCourses.includes(course)
+      );
+      alert(notFoundCourses.join(", ") + " not found, please check manually.");
+    }
   } catch (e) {
-    updateLogs("A connection error occured, please reload the page");
+    updateLogs(
+      "A connection error occured, or you are using IDM, please reload the page, or disable IDM if you are using it"
+    );
   }
   //show loader
   document.getElementById("loader").style.display = "none";
