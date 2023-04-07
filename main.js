@@ -239,10 +239,10 @@ async function main() {
       const notFoundCourses = courses.filter(
         (course) => !foundCourses.includes(course)
       );
-      if (notFoundCourses.length > 0)
-        alert(
-          notFoundCourses.join(", ") + " not found, please check manually."
-        );
+      // if (notFoundCourses.length > 0)
+      //   alert(
+      //     notFoundCourses.join(", ") + " not found, please check manually."
+      //   );
     }
   } catch (e) {
     updateLogs(
@@ -300,13 +300,35 @@ function displayEvents(events) {
   setTimeout(() => {
     document.getElementById("try-again").style.display = "block";
 
+    const notFoundCourses = courses.filter(
+      (course) => !foundCourses.includes(course)
+    );
+
+    let notFoundMessage = "";
+
+    console.log("not found courses", notFoundCourses);
+
+    if (notFoundCourses.length > 0) {
+      notFoundMessage = `<p> ${notFoundCourses.join(
+        ", "
+      )} course(s) not found!</p>`;
+
+      // document.getElementById(
+      //   "logs"
+      // ).innerHTML = `<p>Please check ${notFoundCourses.join(
+      //   ", "
+      // )} course(s)!</p>`;
+
+      // alert(notFoundCourses.join(", ") + " not found, please check manually.");
+    }
+
     document.getElementById("logs").innerHTML =
-      "<p>Process completed Successfully!</p>";
+      notFoundMessage + "<p>Process completed Successfully!</p>";
 
     if (errorOccured)
       document.getElementById("logs").innerHTML =
         "<p>Process completed with errors!</p>";
-  }, 2500);
+  }, 50);
 
   document.body.appendChild(table);
 }
