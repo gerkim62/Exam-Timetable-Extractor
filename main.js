@@ -192,9 +192,10 @@ async function getGPTResponse(prompt) {
 
 function makePrompt(presentCourses, pageText) {
   let dateConstraint = "";
-
+  console.log("previous date ot of if", previousDate);
   if (previousDate) {
-    dateConstraint = `date must be after ${previousDate}. `;
+    dateConstraint = `NOTE:ANY DATE BEFORE ${previousDate.toUpperCase} MUST BE IGNORED AS IT IS INCORRECT. `;
+    console.log("previous date in if", previousDate);
   }
 
   if (presentCourses.length === 0) return;
@@ -238,7 +239,10 @@ async function main() {
       const notFoundCourses = courses.filter(
         (course) => !foundCourses.includes(course)
       );
-      alert(notFoundCourses.join(", ") + " not found, please check manually.");
+      if (notFoundCourses.length > 0)
+        alert(
+          notFoundCourses.join(", ") + " not found, please check manually."
+        );
     }
   } catch (e) {
     updateLogs(
