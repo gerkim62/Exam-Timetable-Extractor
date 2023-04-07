@@ -194,7 +194,7 @@ function makePrompt(presentCourses, pageText) {
   let dateConstraint = "";
 
   if (previousDate) {
-    dateConstraint = `date must be after ${previousDate}`;
+    dateConstraint = `date must be after ${previousDate}. `;
   }
 
   if (presentCourses.length === 0) return;
