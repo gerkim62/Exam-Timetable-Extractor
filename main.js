@@ -216,7 +216,7 @@ async function main() {
   //
   document.getElementById("loader").style.display = "block";
   try {
-    const timetableUrl = "./timetable.pdf";
+    const timetableUrl = "./Final Exam Seating Arrangements.pdf";
     updateLogs("Fetching timetable pdf...");
     console.log("fetching timetable pdf");
     const pdfData = await fetchPdf(timetableUrl, false);
